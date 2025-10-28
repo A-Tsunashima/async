@@ -2,14 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">
 
 <head>
-  <meta charset="utf-8">
-  <title>SpringBoot Sample5-1</title>
+    <meta charset="utf-8">
+    <title>SpringBoot Sample5-1</title>
 </head>
 
 <body>
-  <h1>Authorized! <span sec:authentication="name"></span>
-  </h1>
-  <a href="/logout">ログアウト</a>
+    <h1>Authorized! <span sec:authentication="name"></span>
+    </h1>
+    <a href="/logout">ログアウト</a>
+
+    <br />
+    
+    <a href="/sample5/step2">果物一覧</a>
+    <div>
+        <table th:if="${fruits}" border="1">
+            <thead>
+                <th>ID</th>
+                <th>名前</th>
+                <th>価格</th>
+                <th>処理</th>
+            </thead>
+            <tbody>
+                <tr th:each="fruit : ${fruits}">
+                    <td th:text="${fruit.id}"></td>
+                    <td th:text="${fruit.name}"></td>
+                    <td th:text="${fruit.price}"></td>
+                    <td>
+                        <a th:href="@{/sample5/step3(id=${fruit.id})}">購入</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
 </body>
 
 </html>
