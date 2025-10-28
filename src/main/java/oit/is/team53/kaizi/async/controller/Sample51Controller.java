@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -52,6 +53,18 @@ public class Sample51Controller {
       // フルーツリストを取得
       ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
       model.addAttribute("fruits", fruits2);
+      return "sample51.html";
+    }
+
+    @PostMapping("step5")
+    public String step5(@RequestParam Integer id, @RequestParam String name, @RequestParam Integer price, ModelMap model) {
+      
+      Fruit fruit5 = new Fruit(id, name, price);
+
+      fMapper.updateFruitById(fruit5);
+      ArrayList<Fruit> fruits = fMapper.selectAllFruit();
+      model.addAttribute("fruits", fruits);
+
       return "sample51.html";
     }
 

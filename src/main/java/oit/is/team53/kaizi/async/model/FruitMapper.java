@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface FruitMapper {
@@ -17,5 +18,8 @@ public interface FruitMapper {
 
     @Delete("DELETE FROM FRUIT WHERE id = #{id};")
     Boolean deleteFruitById(int id);
+
+    @Update("UPDATE FRUIT SET name = #{name}, price = #{price} WHERE id = #{id};")
+    Boolean updateFruitById(Fruit fruit);
 
 }
