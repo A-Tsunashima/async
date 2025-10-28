@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import oit.is.team53.kaizi.async.model.*;
 
@@ -30,5 +31,16 @@ public class Sample51Controller {
         model.addAttribute("fruits", fruits);
         return "sample51.html";
     } 
+
+    @GetMapping("step3")
+    public String step3(@RequestParam Integer id, ModelMap model) {
+        Fruit fruit = fMapper.selectFruitById(id);
+        model.addAttribute("BoughtFruit", fruit);
+
+        fMapper.deleteFruitById(id);
+        ArrayList<Fruit> fruits = fMapper.selectAllFruit();
+        model.addAttribute("fruits", fruits);
+        return "sample51.html";
+    }
     
 }

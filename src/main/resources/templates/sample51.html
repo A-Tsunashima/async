@@ -12,7 +12,7 @@
     <a href="/logout">ログアウト</a>
 
     <br />
-    
+
     <a href="/sample5/step2">果物一覧</a>
     <div>
         <table th:if="${fruits}" border="1">
@@ -33,6 +33,7 @@
                 </tr>
             </tbody>
         </table>
+        <p th:if="${BoughtFruit}">[[${BoughtFruit.name}]]を[[${BoughtFruit.price}]]円で購入しました。</p>
     </div>
 
 
