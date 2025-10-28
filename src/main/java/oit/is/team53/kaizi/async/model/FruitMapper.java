@@ -17,5 +17,5 @@ public interface FruitMapper {
 
     @Delete("DELETE FROM FRUIT WHERE id = #{id};")
     Boolean deleteFruitById(int id);
-    
+
 }
